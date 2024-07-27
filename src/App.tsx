@@ -7,7 +7,9 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );
