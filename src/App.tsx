@@ -1,10 +1,14 @@
 import React from "react";
-import BlurIn from "@/components/magicui/blur-in";
+import Header from "./components/layout/Header";
+import { Outlet } from "react-router-dom";
+import Footer from "./components/layout/Footer";
 
-const App = () => {
+const App: React.FC = () => {
   return (
-    <div>
-      <BlurIn word={"Hello World"}></BlurIn>
+    <div className="min-h-screen">
+      <Header />
+      <Outlet />
+      <Footer />
     </div>
   );
 };
