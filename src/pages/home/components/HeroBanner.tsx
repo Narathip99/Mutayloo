@@ -16,7 +16,7 @@ import banner2 from "@/assets/images/banner2.jpg";
 import banner3 from "@/assets/images/banner3.jpg";
 
 // Types
-import { BannerType } from "@/types/banner";
+import { BannerType } from "@/types/bannerTypes";
 
 // Data
 const bannerData: BannerType[] = [
