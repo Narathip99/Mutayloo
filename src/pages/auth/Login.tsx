@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/use-toast";
 
 interface LoginFormInputs {
   email: string;
@@ -27,15 +28,23 @@ const Login: React.FC = () => {
     formState: { errors },
   } = useForm<LoginFormInputs>();
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     try {
       const response = await login(data.email, data.password);
       localStorage.setItem("authToken", response.token);
+      toast({
+        title: "Login successful",
+        description: "You have successfully logged in.",
+      });
       navigate("/"); // Redirect to home page
     } catch (error) {
       console.error("Login failed", error);
-      // Handle login error (e.g., show error message to user)
+      toast({
+        title: "Login failed",
+        description: "Invalid email or password. Please try again.",
+      });
     }
   };
 

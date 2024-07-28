@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate, Link } from "react-router-dom";
 import { registerUser } from "@/api/userApi";
 import { registerSchema } from "@/utils/validationSchemas";
+import { useToast } from "@/components/ui/use-toast";
 
 // components
 import { Button } from "@/components/ui/button";
@@ -48,6 +49,7 @@ const Register: React.FC = () => {
     resolver: zodResolver(registerSchema),
   });
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const onSubmit: SubmitHandler<RegisterFormInputs> = async (data) => {
     try {
@@ -68,7 +70,10 @@ const Register: React.FC = () => {
         dob: dob,
       });
       console.log("Registration successful:", response);
-      localStorage.setItem("authToken", response.token);
+      toast({
+        title: "Registration success",
+        description: "You have successfully registered. You can now login.",
+      });
       navigate("/login"); // Redirect to login page after successful registration
     } catch (error) {
       console.error("Registration failed", error);

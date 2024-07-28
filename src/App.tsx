@@ -5,6 +5,8 @@ import Header from "./components/layout/Header";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/layout/Footer";
 
+import { Toaster } from "@/components/ui/toaster";
+
 const App: React.FC = () => {
   const location = useLocation();
 
@@ -19,6 +21,8 @@ const App: React.FC = () => {
       location.pathname === "/register" ? null : (
         <Footer />
       )}
+
+      <Toaster />
     </div>
   );
 };
