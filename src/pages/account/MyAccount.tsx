@@ -50,12 +50,12 @@ const MyAccount: React.FC = () => {
   const onSubmit: SubmitHandler<MyAccountFormInputs> = async (data) => {
     if (data.newPassword !== data.repeatNewPassword) {
       return toast({
+        variant: "destructive",
         title: "Error",
         description: "Passwords do not match",
       });
     }
 
-    //TODO can't update profile
     try {
       const formData = new FormData();
       formData.append("fname", data.fname);
@@ -88,9 +88,9 @@ const MyAccount: React.FC = () => {
     } catch (error) {
       console.error("Error updating profile:", error);
       toast({
+        variant: "destructive",
         title: "Error",
         description: "Failed to update profile",
-        status: "error",
       });
     }
   };

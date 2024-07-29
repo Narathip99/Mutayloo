@@ -83,7 +83,7 @@ const Register: React.FC = () => {
 
   // Use useEffect to trigger validation on input change
   useEffect(() => {
-    const subscription = watch((value, { name }) => {
+    const subscription = watch((_, { name }) => {
       if (name) {
         trigger(name as keyof RegisterFormInputs);
       }
