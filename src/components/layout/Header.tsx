@@ -1,13 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 // icons
-import { User } from "lucide-react";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, User } from "lucide-react";
+// components
+import ProfileTrigger from "../ui/ProfileTrigger";
 
 const menu = ["Home", "Products", "Horoscope", "Contact Us"];
 
 const Header: React.FC = () => {
+  const { isAuthenticated } = useAuth();
+
   return (
     <>
       <header className="bg-white h-[60px] lg:h-[68px] shadow-lg sticky top-0 z-20">
@@ -29,7 +33,13 @@ const Header: React.FC = () => {
           </menu>
 
           <div className="flex gap-4 items-center">
-            <User />
+            {isAuthenticated ? (
+              <ProfileTrigger />
+            ) : (
+              <Link to="/login">
+                <User />
+              </Link>
+            )}
             <ShoppingCart />
           </div>
         </nav>

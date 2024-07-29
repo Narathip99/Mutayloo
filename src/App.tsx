@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 import Header from "./components/layout/Header";
 import { Outlet } from "react-router-dom";
@@ -11,19 +12,21 @@ const App: React.FC = () => {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
-        <Outlet />
-      </main>
+    <AuthProvider>
+      <div className="min-h-screen">
+        <Header />
+        <main>
+          <Outlet />
+        </main>
 
-      {location.pathname === "/login" ||
-      location.pathname === "/register" ? null : (
-        <Footer />
-      )}
+        {location.pathname === "/login" ||
+        location.pathname === "/register" ? null : (
+          <Footer />
+        )}
 
-      <Toaster />
-    </div>
+        <Toaster />
+      </div>
+    </AuthProvider>
   );
 };
 

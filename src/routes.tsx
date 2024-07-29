@@ -6,6 +6,7 @@ import App from "./App";
 import Home from "./pages/home/Home";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import Account from "./pages/account/Account";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,13 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
-      }
+      },
+
+      // account
+      {
+        path: "/account",
+        element: <Account />,
+      },
     ],
   },
 ]);

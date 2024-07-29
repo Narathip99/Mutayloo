@@ -1,14 +1,13 @@
 import axios from "axios";
+const apiUrl = import.meta.env.VITE_API_URL;
 
-// สร้าง instance ของ Axios
 const apiClient = axios.create({
-  baseURL: "http://localhost:5555",
+  baseURL: apiUrl,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-// ตัวอย่างการตั้งค่า interceptor เพื่อเพิ่ม token ใน headers
 apiClient.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("authToken");
