@@ -34,7 +34,7 @@ export const getProfile = async (): Promise<User> => {
 
 // Update user profile
 export const updateUserProfile = async (formData: FormData): Promise<User> => {
-  const response = await apiClient.post<User>("/users/profile", formData, {
+  const response = await apiClient.patch<User>("/users/profile", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
