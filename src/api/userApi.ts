@@ -6,6 +6,14 @@ import {
   RegisterResponse,
 } from "@/types/userTypes";
 
+// Register
+export const registerUser = async (
+  data: RegisterData
+): Promise<RegisterResponse> => {
+  const response = await apiClient.post("/users/register", data);
+  return response.data;
+};
+
 // Login
 export const login = async (
   email: string,
@@ -21,14 +29,6 @@ export const login = async (
 // Get user profile
 export const getProfile = async (): Promise<User> => {
   const response = await apiClient.get<User>("/users/profile");
-  return response.data;
-};
-
-// Register
-export const registerUser = async (
-  data: RegisterData
-): Promise<RegisterResponse> => {
-  const response = await apiClient.post("/users/register", data);
   return response.data;
 };
 

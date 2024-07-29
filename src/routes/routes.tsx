@@ -2,11 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
 // components
-import App from "./App";
-import Home from "./pages/home/Home";
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import Account from "./pages/account/Account";
+import ProtectedRoute from "./ProtectedRoute";
+import App from "@/App";
+import Home from "@/pages/home/Home";
+import Login from "@/pages/auth/Login";
+import Register from "@/pages/auth/Register";
+import Account from "@/pages/account/Account";
+import MyAccount from "@/pages/account/MyAccount";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +38,17 @@ const router = createBrowserRouter([
       // account
       {
         path: "/account",
-        element: <Account />,
+        element: (
+          <ProtectedRoute>
+            <Account />
+          </ProtectedRoute>
+        ),
+        children: [
+          {
+            path: "",
+            element: <MyAccount />,
+          },
+        ],
       },
     ],
   },

@@ -1,6 +1,6 @@
 import React from "react";
 import SideBar from "@/components/layout/AccountSideBar";
-//import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 const Account: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const Account: React.FC = () => {
           <SideBar />
         </div>
         <div className="col-span-12 lg:col-span-8 xl:col-span-9">
-          content
+          <Outlet />
         </div>
       </section>
     </main>
